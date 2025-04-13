@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../components/Button';
+import '../css/Favorites.scss';
 
 const Favorites = () => {
   const [favorites, setFavorites] = useState([]);
@@ -37,9 +38,9 @@ const Favorites = () => {
   }, []);
 
   return (
-    <div className="favorites-page" style={{ padding: "2rem" }}>
+    <div className="favorites-page" >
       <Link to="/">
-        <Button label="Back" />
+        <Button Label="Back" />
       </Link>
       <h2>Your Favorite Pokémon</h2>
 
@@ -48,33 +49,16 @@ const Favorites = () => {
       ) : favorites.length === 0 ? (
         <p>No favorites yet.</p>
       ) : (
-        <div className="favorites-grid" style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: '1.5rem',
-          marginTop: '2rem'
-        }}>
+        <div className="favorites-grid">
           {favorites.map(pokemon => (
-            <Link
+            <Link className='linkFavorites'
               key={pokemon.id}
               to={`/${pokemon.name}`}
-              style={{
-                border: '1px solid #ddd',
-                padding: '1rem',
-                borderRadius: '8px',
-                textAlign: 'center',
-                width: '150px',
-                textDecoration: 'none',
-                backgroundColor: '#f9f9f9',
-                color: '#333',
-              }}
             >
-              <img
+              <img className='favoriteImg'
                 src={pokemon.sprites.front_default}
-                alt={pokemon.name}
-                style={{ width: '100px', height: '100px' }}
-              />
-              <h4 style={{ textTransform: 'capitalize', marginTop: '0.5rem' }}>
+                alt={pokemon.name} />
+              <h4 className='favoritesText'>
                 {pokemon.name}
               </h4>
             </Link>

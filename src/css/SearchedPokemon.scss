@@ -67,6 +67,9 @@
         .pokemon-details{
             flex-direction: column-reverse;
             gap: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
 
             .searched-pokemon_info{
                 text-align: center;
@@ -128,3 +131,8 @@
     
 }
 
+.stats-chart {
+    width: 100%;
+    max-width: 500px;
+    margin-top: 20px;
+  }

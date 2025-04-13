@@ -42,3 +42,34 @@
     }
   }
   
+  .Favorites-page{
+    padding: 2rem;
+        
+  }
+  .favorites-grid{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 2rem;
+
+    .linkFavorites{
+      border: 1px solid #add;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+      width: 150px;
+      text-decoration: none;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    .favoriteImg{
+      width: 100px;
+      height: 100px;
+    }
+
+    .favoritesText{
+      text-transform: capitalize;
+      margin-top: 0.5rem;
+    }
+  }

@@ -5,6 +5,7 @@ import SearchedPokemon from './pages/SearchedPokemon';
 import Home from './pages/Home';
 import './css/Header.scss'
 import Favorites from './pages/Favorites';
+import FavoritesChartPage from './pages/FavoritesChartPage';
 
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
         <Route path= {"/"} element={<Home />} />
         <Route path= {"/:pokemon"} element={<SearchedPokemon />} />
         <Route path="/favorites" element={<Favorites />} />
+        <Route path="/favoriteschart" element={<FavoritesChartPage />} />
       </Routes>
     </div>
   )

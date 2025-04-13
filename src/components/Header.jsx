@@ -25,6 +25,10 @@ const Header = () => {
                 <Link to={`/favorites`}>
                   <Button Label={"favorites"} />            
                 </Link>
+
+                <Link to="/favoritesChartPage">
+                  <Button Label={"View Chart"} />
+                </Link>
             </div>
         </nav>
     </header>

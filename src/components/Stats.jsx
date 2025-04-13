@@ -5,6 +5,7 @@ import Stat from './Stat';
 const Stats = ({stats}) => {
   return (
     <div className='stats'>
+        <Stat parameter={"ID"} value={stats.id} />
         <Stat parameter={"Height"} value={stats.height} units=
         {"cm"} />
         <Stat parameter={"Weight"} value={stats.weight} units=
@@ -16,6 +17,8 @@ const Stats = ({stats}) => {
         <Stat parameter={"Spl Attack"} value={stats.splAttack} />
         <Stat parameter={"Spl Defence"} value={stats.splDefence} />
         <Stat parameter={"Speed"} value={stats.speed} />
+        <Stat parameter={"Ability 1"} value={stats.abilityOne} />
+        <Stat parameter={"Ability 2"} value={stats.abilityTwo} />
     </div>
   );
 };

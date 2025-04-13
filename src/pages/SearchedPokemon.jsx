@@ -3,23 +3,27 @@ import { Link, useParams } from 'react-router-dom'
 import Button from '../components/Button';
 import '../css/SearchedPokemon.scss';
 import Stats from '../components/Stats';
+import BarChart from '../components/BarChart';
 
 const SearchedPokemon = () => {
   const {pokemon } = useParams();
   const [selectedPokemon, setSelectedPokemon] = useState
   ([]);
   
-  const [stats, setStats] = useState({
-    height:0,
-    weight:0,
-    exp:0,
-    hp:0,
-    attack:0,
-    defence:0,
-    splAttack:0,
-    splDefence:0,
-    speed:0,
-  });
+  const [stats, setStats ] = useState({
+    height: 0,
+    weight: 0,
+    exp: 0,
+    hp: 0,
+    attack: 0,
+    defence: 0,
+    splAttack: 0,
+    splDefence: 0,
+    speed: 0,
+    abilityOne: 0,
+    abilityTwo: 0,
+    id: 0,
+    });
 
   const [favorites, setFavorites] = useState(() => {
     const saved = localStorage.getItem("favorites");
@@ -29,14 +33,31 @@ const SearchedPokemon = () => {
   const isFavorite = favorites.some(fav => fav.name === selectedPokemon.name);
 
   const toggleFavorite = () => {
-    let updated;
+    let updatedFavorites;
+    let updatedFavoriteCounts = JSON.parse(localStorage.getItem("favoriteCounts")) || {};
+    
     if (isFavorite) {
-      updated = favorites.filter(fav => fav.name !== selectedPokemon.name);
+      updatedFavorites = favorites.filter(fav => fav.name !== selectedPokemon.name);
+      // Track removal count
+      if (updatedFavoriteCounts[selectedPokemon.name]) {
+        updatedFavoriteCounts[selectedPokemon.name].removed += 1;
+      } else {
+        updatedFavoriteCounts[selectedPokemon.name] = { added: 0, removed: 1 };
+      }
+      
     } else {
-      updated = [...favorites, { name: selectedPokemon.name }];
+      updatedFavorites = [...favorites, { name: selectedPokemon.name }];
+      // Track addition count
+      if (updatedFavoriteCounts[selectedPokemon.name]) {
+          updatedFavoriteCounts[selectedPokemon.name].added += 1;
+      } else {
+        updatedFavoriteCounts[selectedPokemon.name] = { added: 1, removed: 0 };
+      }
     }
-    setFavorites(updated);
-    localStorage.setItem("favorites", JSON.stringify(updated));
+    
+    setFavorites(updatedFavorites);
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+    localStorage.setItem("favoriteCounts", JSON.stringify(updatedFavoriteCounts));
   };
   
 //COLORS
@@ -72,16 +93,19 @@ const colours ={
 
         setSelectedPokemon(data);
         setStats({
-          height: (data.height / 3.048).toFixed(1) ,
-          weight: (data.weight / 10).toFixed(1),
-          exp: data.base_experience, 
+          id: data.id,
+          height: data.height,
+          weight: data.weight,
+          exp: data.base_experience,
           hp: data.stats[0].base_stat,
           attack: data.stats[1].base_stat,
           defence: data.stats[2].base_stat,
           splAttack: data.stats[3].base_stat,
           splDefence: data.stats[4].base_stat,
           speed: data.stats[5].base_stat,
-        });
+          abilityOne: data.abilities[0].ability.name,
+          abilityTwo: data.abilities[1].ability.name,
+             });
         
       } catch (error){}
     }
@@ -93,7 +117,7 @@ const colours ={
  return <div className='search-pokemon '>
     <div className="searched-pokemon_header">
       <Link to={"/"}>
-        <Button label="Back" />
+        <Button Label="Back" />
       </Link>
     </div>
 
@@ -117,6 +141,7 @@ const colours ={
         {isFavorite ? "★ Remove from Favorites" : "☆ Add to Favorites"}
         </button>
           <Stats stats={stats} />
+          <BarChart stats={stats} />
       </div>
 
       <div className="previewImage">
@@ -124,6 +149,7 @@ const colours ={
           src={selectedPokemon.sprites?.front_default} 
           alt={selectedPokemon.name}
         />
+        <img src={selectedPokemon.sprites?.front_shiny} alt={selectedPokemon.name}/>
       </div>
     </div>
   </div>
