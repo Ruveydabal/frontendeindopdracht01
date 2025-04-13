@@ -1,0 +1,114 @@
+.search-pokemon{
+    height: 100vh;
+    overflow-y: auto;
+    padding: 1rem;
+
+    .searched-pokemon_header{
+        margin-bottom: 1rem;
+    }
+    
+    .pokemon-details{
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+
+        .searched-pokemon_info{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex: 1;
+            background-color: aliceblue;
+        }
+
+        .searched-pokemon_info h4{
+            font-size: clamp(3rem, 7vw, 5rem);
+            text-transform: capitalize;
+            font-weight: 600;
+        }
+
+        .searched-pokemon_info .type{
+            display: flex;
+            gap: 0.8rem;
+            margin-block: 1rem;
+        }
+
+        .searched-pokemon_info .type span{
+            padding: 0.5rem;
+            color: #fff;
+            font-weight: 600;
+            text-transform: capitalize;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .previewImage img{
+            width: 200px;
+            height: 200px;
+        }
+    }
+
+    @media(max-width: 786px){
+        .pokemon-details{
+            flex-direction: column-reverse;
+            gap: 1rem;
+
+            .searched-pokemon_info{
+                text-align: center;
+                width: 100%;
+        
+                .search-pokemon .type{
+                    justify-content: center;
+                    margin-bottom: 2rem;
+                }
+            }
+
+            .previewImage{
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+
+   
+}
+
+.stats{
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 2rem;
+
+    .stats .stat{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+    }
+
+    .stat .parameter{
+        font-size: 0.8rem;
+        font-weight: 400;
+    }
+
+    .stat .value{
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        border-radius: 5px;
+        font-size: 1.5rem;
+        font-weight: 400;
+        min-width: 120px;
+        text-align: center;
+    }
+
+    .stat .unit{
+        margin-left: 4px;
+        font-weight: 300;
+        font-size: 0.9rem;
+    }
+
+    
+}
+
