@@ -5,47 +5,62 @@
     grid-template-columns: repeat(auto-fit, minmax(150px,
     1fr));
     gap: 1rem;
-    .card
+}
+
+.card
+{
+    border-radius: 5px;
+    display: flex;
+    gap: 1rem;
+    //flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    height: 80px;
+    background-color: rebeccapurple;
+
+    .card:hover
     {
-        padding: 10px;
-        border-radius: 5px;
-        display: flex;
-        gap: 1rem;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        cursor: pointer;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.08);
     }
+
+    .card img
+    {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
+
+     .text
+    {
+        width: 100%;
+        text-align: center;
+
+        .name
+        {
+            text-transform: capitalize;
+           
+            .card .pokeId
+            {
+            font-size: 0.8rem;
+            margin-right: 5px;
+            font-weight: 400;  
+            }
+        }
+        
+    }
+
+    
+
+   
+
 }
 
 
 
-.card:hover
-{
-box-shadow: 0 0 40px rgba(0, 0, 0, 0.08);
-}
 
-.card img
-{
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-}
 
-.card .text
-{
-    width: 100%;
-    text-align: center;
-}
 
-.card .pokeId
-{
-  font-size: 0.8rem;
-  margin-right: 5px;
-  font-weight: 400;  
-}
 
-.card .name
-{
-    text-transform: capitalize;
-}
+
+

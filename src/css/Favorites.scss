@@ -1,0 +1,44 @@
+.favorites-page {
+    padding: 1rem;
+    text-align: center;
+  
+    .favorites-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+  
+      h2 {
+        margin: 0;
+      }
+    }
+  
+    .favorites-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+  
+      .favorite-card {
+        background-color: #f8f8f8;
+        padding: 1rem 1.5rem;
+        border-radius: 10px;
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease;
+  
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+  
+    p {
+      color: #888;
+      font-style: italic;
+    }
+  }
+  

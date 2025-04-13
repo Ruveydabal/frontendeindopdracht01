@@ -8,6 +8,7 @@ const SearchedPokemon = () => {
   const {pokemon } = useParams();
   const [selectedPokemon, setSelectedPokemon] = useState
   ([]);
+  
   const [stats, setStats] = useState({
     height:0,
     weight:0,
@@ -19,6 +20,24 @@ const SearchedPokemon = () => {
     splDefence:0,
     speed:0,
   });
+
+  const [favorites, setFavorites] = useState(() => {
+    const saved = localStorage.getItem("favorites");
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  const isFavorite = favorites.some(fav => fav.name === selectedPokemon.name);
+
+  const toggleFavorite = () => {
+    let updated;
+    if (isFavorite) {
+      updated = favorites.filter(fav => fav.name !== selectedPokemon.name);
+    } else {
+      updated = [...favorites, { name: selectedPokemon.name }];
+    }
+    setFavorites(updated);
+    localStorage.setItem("favorites", JSON.stringify(updated));
+  };
   
 //COLORS
 const colours ={
@@ -71,7 +90,7 @@ const colours ={
 
   
 
- return <div className='search-pokemon maxWidth'>
+ return <div className='search-pokemon '>
     <div className="searched-pokemon_header">
       <Link to={"/"}>
         <Button label="Back" />
@@ -94,12 +113,15 @@ const colours ={
           </span>
           ))}
         </div>
+        <button className="favorite-btn" onClick={toggleFavorite}>
+        {isFavorite ? "★ Remove from Favorites" : "☆ Add to Favorites"}
+        </button>
           <Stats stats={stats} />
       </div>
 
       <div className="previewImage">
         <img 
-          src={selectedPokemon.sprites?.front_default}
+          src={selectedPokemon.sprites?.front_default} 
           alt={selectedPokemon.name}
         />
       </div>

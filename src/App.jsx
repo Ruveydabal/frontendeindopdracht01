@@ -4,6 +4,7 @@ import React from 'react'
 import SearchedPokemon from './pages/SearchedPokemon';
 import Home from './pages/Home';
 import './css/Header.scss'
+import Favorites from './pages/Favorites';
 
 
 const App = () => {
@@ -12,6 +13,7 @@ const App = () => {
       <Routes>
         <Route path= {"/"} element={<Home />} />
         <Route path= {"/:pokemon"} element={<SearchedPokemon />} />
+        <Route path="/favorites" element={<Favorites />} />
       </Routes>
     </div>
   )

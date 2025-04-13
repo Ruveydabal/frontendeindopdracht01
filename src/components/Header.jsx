@@ -21,6 +21,10 @@ const Header = () => {
                 <Link to={`/${query}`}>   
                   <Button Label={"Search"} />    
                 </Link>  
+                
+                <Link to={`/favorites`}>
+                  <Button Label={"favorites"} />            
+                </Link>
             </div>
         </nav>
     </header>

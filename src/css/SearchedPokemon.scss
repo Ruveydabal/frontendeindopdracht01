@@ -11,19 +11,35 @@
         display: flex;
         gap: 2rem;
         align-items: center;
+        display: flex;
+        flex-direction: row;
 
         .searched-pokemon_info{
+            height: auto;
+            width: 100px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             flex: 1;
-            background-color: aliceblue;
         }
 
         .searched-pokemon_info h4{
             font-size: clamp(3rem, 7vw, 5rem);
             text-transform: capitalize;
             font-weight: 600;
+
+            .favorite-btn {
+                background: none;
+                border: none;
+                font-size: 1rem;
+                cursor: pointer;
+                color: gold;
+                margin-top: 10px;
+              
+                &:hover {
+                  text-shadow: 0 0 5px rgba(255, 215, 0, 0.7);
+                }
+              }
         }
 
         .searched-pokemon_info .type{

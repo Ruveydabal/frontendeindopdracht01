@@ -3,6 +3,7 @@ import "../css/Feed.scss";
 import Card from './Card';
 import { Link } from 'react-router-dom';
 
+
 const Feed =({ pokemons }) => {
   
   return (
